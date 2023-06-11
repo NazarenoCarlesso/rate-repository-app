@@ -1,44 +1,36 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
 import { StyledText } from './StyledText'
+import { RepositoryStats } from './RepositoryStats'
+import theme from '../theme'
+import { RepositoryItemHeader } from './RepositoryItemHeader'
 
 export const RepositoryItem = (props) => {
   return (
     <View style={styles.container}>
-      <StyledText fontSize='subheading' fontWeight='bold'>
-        {props.fullName}
-      </StyledText>
-      <StyledText fontWeight='bold'>
-        {props.description}
-      </StyledText>
-      <StyledText color='secondary'>
-        {props.language}
-      </StyledText>
-      <StyledText>
-        Stars: {props.stargazersCount}
-      </StyledText>
-      <StyledText>
-        Forks: {props.forksCount}
-      </StyledText>
-      <StyledText>
-        Review: {props.reviewCount}
-      </StyledText>
-      <StyledText>
-        Rating: {props.ratingAverage}
-      </StyledText>
+      <RepositoryItemHeader {...props} />
+      <RepositoryStats {...props} />
     </View>
   )
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     padding: 20,
-    paddingBottom: 5,
-    paddingTop: 5
+    paddingVertical: 5
   },
-  strong: {
-    color: '#09f',
-    fontWeight: 'bold',
-    marginBottom: 5
+  language: {
+    padding: 4,
+    color: theme.colors.white,
+    backgroundColor: theme.colors.primary,
+    alignSelf: 'flex-start',
+    borderRadius: 4,
+    overflow: 'hidden',
+    marginVertical: 4
+  },
+  image: {
+    height: 48,
+    width: 48,
+    borderRadius: 4
   }
 })
